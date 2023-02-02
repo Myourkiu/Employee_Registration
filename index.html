@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Registration</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/scripts.js"></script>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  </head>
+  <body>
+      
+        <div class="wrapper">
+            <div class="header">
+                  <div class="steps">
+                    <span class="circle active">
+                      <i class="bi bi-clipboard2-minus-fill"></i>
+                    </span>
+                    <span class="circle">
+                      <i class="bi bi-file-person-fill"></i>
+                    </span>
+                    <span class="circle">
+                      <i class="bi bi-house-door-fill"></i>
+                    </span>
+                    <span class="circle">
+                      <i class="bi bi-buildings-fill"></i>
+                    </span>
+
+                    <div class="progress-bar">
+                      <span class="indicator"></span>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="form_wrap">
+                <div class="form_1 data_info">
+                  <h2>Informações de Registro</h2>
+                  <form>
+                    <div class="form_container">
+                      <div class="input_wrap">
+                        <label for="email_address">Email</label>
+                        <input
+                          type="email"
+                          name="Email Address"
+                          id="email_address"
+                          required
+                        />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="password">Senha</label>
+                        <input type="password" name="Password" id="password" required />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="confirm_password">Confirme a senha</label>
+                        <input
+                          type="password"
+                          name="Confirme a senha"
+                          id="confirm_password"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="form_2 data_info">
+                  <h2>Informações Pessoais</h2>
+                  <form>
+                    <div class="form_container">
+                      <div class="input_wrap">
+                        <label for="name">Nome</label>
+                        <input type="text" name="Name" id="name" required />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="lastname">Sobrenome</label>
+                        <input type="text" name="LastName" id="lastname" required />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="cpf">CPF</label>
+                        <input
+                          type="text"
+                          name="CPF"
+                          id="cpf"
+                          minlength="14"
+                          maxlength="14"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="form_3 data_info">
+                  <h2>Endereço</h2>
+                  <form>
+                    <div class="form_container">
+                      <div class="input_wrap">
+                        <label for="cep">CEP</label>
+                        <input
+                          type="text"
+                          name="Cep"
+                          id="cep"
+                          minlength="8"
+                          maxlength="8"
+                          required
+                        />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="address">Rua</label>
+                        <input
+                          type="text"
+                          name="Address"
+                          id="address"
+                          disabled
+                          required
+                          data-input
+                        />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="number">Número da residência</label>
+                        <input
+                          type="text"
+                          name="Number"
+                          id="number"
+                          disabled
+                          required
+                          data-input
+                        />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="complement">Complemento</label>
+                        <input
+                          type="text"
+                          name="Complement"
+                          id="complement"
+                          disabled
+                          data-input
+                        />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="neighborhood">Bairro</label>
+                        <input
+                          type="text"
+                          name="Neighborhood"
+                          id="neighborhood"
+                          disabled
+                          required
+                          data-input
+                        />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="city">Cidade</label>
+                        <input
+                          type="text"
+                          name="City"
+                          id="city"
+                          disabled
+                          required
+                          data-input
+                        />
+                      </div>
+                      <div class="input_wrap">
+                        <label for="city">Cidade</label>
+                        <select
+                          class="form-select"
+                          id="region"
+                          disabled
+                          required
+                          data-input
+                        >
+                        <option selected>Estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form_ data_info">
+                        <h2>Informações Pessoais</h2>
+                        <form>
+                          <div class="form_container">
+                            <div class="input_wrap">
+                              <label for="current_company">Empresa Atual</label>
+                              <input type="text" name="Current Company" id="current_company" required />
+                            </div>
+                            <div class="input_wrap">
+                              <label for="total_experience">Experiência Total(em anos)</label>
+                              <select name="Total Experience" id="total_experience" required>
+                                <option selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10+</option>
+                              </select>
+                            </div>
+                            <div class="input_wrap">
+                              <label for="university">Faculdade(caso tenha)</label>
+                              <input
+                                type="text"
+                                name="University"
+                                id="university"
+                                required
+                              />
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                
+                  </form>
+                </div>
+                <div class="btns_wrap">
+                    <div class="common_btns form_1_btns">
+                        <button type="button" class="btn_next">Próximo
+                            <span class="icon">
+                                <i class="bi bi-arrow-right"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="common_btns form_2_btns">
+                        <button type="button" class="btn_back">Voltar
+                            <span class="icon">
+                                <i class="bi bi-arrow-left"></i>
+                            </span>
+                        </button>
+                        <button type="button" class="btn_next">Próximo
+                            <span class="icon">
+                                <i class="bi bi-arrow-right"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="common_btns form_3_btns">
+                        <button type="button" class="btn_back">Voltar
+                            <span class="icon">
+                                <i class="bi bi-arrow-left"></i>
+                            </span>
+                        </button>
+                        <button type="button" class="btn_next">Próximo
+                            <span class="icon">
+                                <i class="bi bi-arrow-right"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="common_btns form_2_btns">
+                        <button type="button" class="btn_back">Voltar
+                            <span class="icon">
+                                <i class="bi bi-arrow-left"></i>
+                            </span>
+                        </button>
+                        <button type="button" class="btn_done">Concluir
+                            <span class="icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+            
+                  
+
+  </body>
+</html>
