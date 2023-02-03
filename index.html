@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Registration</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/scripts.js"></script>
+    <script src="js/scripts.js" defer></script>
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   </head>
   <body>
-      
         <div class="wrapper">
             <div class="header">
                   <div class="steps">
@@ -65,7 +64,7 @@
                     </div>
                   </form>
                 </div>
-                <div class="form_2 data_info">
+                <div class="form_2 data_info" style="display: none;">
                   <h2>Informações Pessoais</h2>
                   <form>
                     <div class="form_container">
@@ -91,7 +90,7 @@
                     </div>
                   </form>
                 </div>
-                <div class="form_3 data_info">
+                <div class="form_3 data_info" style="display: none;">
                   <h2>Endereço</h2>
                   <form>
                     <div class="form_container">
@@ -161,7 +160,7 @@
                         />
                       </div>
                       <div class="input_wrap">
-                        <label for="city">Cidade</label>
+                        <label for="city">Estado</label>
                         <select
                           class="form-select"
                           id="region"
@@ -201,7 +200,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="form_ data_info">
+                    <div class="form_4 data_info" style="display: none;">
                         <h2>Informações Pessoais</h2>
                         <form>
                           <div class="form_container">
@@ -248,11 +247,12 @@
                             </span>
                         </button>
                     </div>
-                    <div class="common_btns form_2_btns">
-                        <button type="button" class="btn_back">Voltar
+                    <div class="common_btns form_2_btns" style="display: none;">
+                        <button type="button" class="btn_back">
                             <span class="icon">
                                 <i class="bi bi-arrow-left"></i>
                             </span>
+                            Voltar
                         </button>
                         <button type="button" class="btn_next">Próximo
                             <span class="icon">
@@ -260,11 +260,12 @@
                             </span>
                         </button>
                     </div>
-                    <div class="common_btns form_3_btns">
-                        <button type="button" class="btn_back">Voltar
+                    <div class="common_btns form_3_btns" style="display: none;">
+                        <button type="button" class="btn_back">
                             <span class="icon">
                                 <i class="bi bi-arrow-left"></i>
                             </span>
+                            Voltar
                         </button>
                         <button type="button" class="btn_next">Próximo
                             <span class="icon">
@@ -272,11 +273,12 @@
                             </span>
                         </button>
                     </div>
-                    <div class="common_btns form_2_btns">
-                        <button type="button" class="btn_back">Voltar
+                    <div class="common_btns form_4_btns" style="display: none;">
+                        <button type="button" class="btn_back">
                             <span class="icon">
                                 <i class="bi bi-arrow-left"></i>
                             </span>
+                            Voltar
                         </button>
                         <button type="button" class="btn_done">Concluir
                             <span class="icon"></span>
@@ -286,8 +288,14 @@
             </div>
         </div>
                 
-            
-                  
-
+        <div class="modal_wrapper">
+          <div class="shadow"></div>
+          <div class="sucess_wrap">
+            <span class="modal_icon">
+              <i class="bi bi-check-circle-fill"></i>
+            </span>
+            <p>Você completou o processo!</p>
+        </div>
+        </div>
   </body>
 </html>

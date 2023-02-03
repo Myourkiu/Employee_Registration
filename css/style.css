@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 :root{
-    --primary: #3e42b7;
+    --primary: #4070f4;
     --secondary: #bfc0c0;
     --text-color: #5b6475;
     --header-color: #25283d;
-    --next-btn-hover: #8577d2;
-    --back-btn-hover: #8b8c8c;
+    --next-btn-hover: #6a8ff5;
 }
 
 *{
@@ -65,6 +64,13 @@ body{
     border: 4px solid #e0e0e0;
 }
 
+.wrapper .header .steps .circle.active{
+    border-color: #4070f4;
+    color: #4070f4;
+    transition: border-color .5s ease;
+    transition-delay: 0s;
+}
+
 .wrapper .header .steps .progress-bar{
     position: absolute;
     height: 4px;
@@ -77,9 +83,152 @@ body{
     position: absolute;
     height: 100%;
     /* 7%  33% 65% 100%*/
-    width: 100%;
+    width: 0%;
     background: #4070f4;
-    
+    transition: all .5s ease;
+}
+
+.wrapper .form_wrap{
+    margin-bottom: 35px;
+}
+
+.wrapper .form_wrap h2{
+    color: var(--header-color);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.wrapper .form_wrap .input_wrap{
+    width: 350px;
+    max-width: 100%;
+    margin: 0 auto 20px;
+}
+
+.wrapper .form_wrap .input_wrap:last-child{
+    margin-bottom: 0;
+}
+
+.wrapper .form_wrap .input_wrap label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.wrapper .form_wrap .input_wrap input, select{
+    border: 2px solid var(--secondary);
+    border-radius: 3px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    font-size: 1em;
+    transition: .5s ease;
 }
 
 
+.wrapper .form_wrap .input_wrap input:focus{
+        border-color: var(--primary);
+}
+
+.wrapper .btns_wrap{
+    width: 350px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.wrapper .btns_wrap .common_btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper .btns_wrap .common_btns.form_1_btns{
+    justify-content: flex-end;
+}
+
+.wrapper .btns_wrap .common_btns button{
+    border: 0;
+    padding: 12px 15px;
+    background: var(--primary);
+    color: white;
+    width: 135px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    border-radius: 3px;
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+.wrapper .btns_wrap .common_btns button:hover{
+    background: var(--next-btn-hover);
+}
+
+
+.wrapper .btns_wrap .common_btns button.btn_next .icon{
+    display: flex;
+    margin-left: 10px;
+}
+
+.wrapper .btns_wrap .common_btns button.btn_back .icon{
+    display: flex;
+    margin-right: 10px;
+}
+
+.modal_wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+.modal_wrapper .shadow{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: .2s ease;
+}
+
+.modal_wrapper .sucess_wrap{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -800px);
+    background: #fff;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 7px;
+}
+
+.modal_wrapper .sucess_wrap .modal_icon{
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    /* background-color: #4070f4; */
+    border-radius: 50%;
+    color: #4070f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+.modal_wrapper.active{
+    visibility: visible;
+}
+
+.modal_wrapper.active .shadow{
+    opacity: 1;
+}
+
+.modal_wrapper.active .sucess_wrap{
+    transform: translate(-50%, -50%);
+    transition: .3s ease;
+}
