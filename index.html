@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Registration</title>
     <link rel="stylesheet" href="css/style.css" />
+    
     <script src="js/scripts.js" defer></script>
 
     <!-- Bootstrap Icons -->
@@ -37,29 +38,35 @@
             <div class="form_wrap">
                 <div class="form_1 data_info">
                   <h2>Informações de Registro</h2>
-                  <form>
+                  <form class="form">
                     <div class="form_container">
                       <div class="input_wrap">
                         <label for="email_address">Email</label>
                         <input
+                          class="input_area"
                           type="email"
                           name="Email Address"
                           id="email_address"
-                          required
+                          oninput="emailValidate()"
                         />
+                        <span class="span-required">Digite um email válido</span>
                       </div>
                       <div class="input_wrap">
                         <label for="password">Senha</label>
-                        <input type="password" name="Password" id="password" required />
+                        <input
+                          class="input_area" type="password" name="Password" id="password" oninput="mainPasswordValidate()" />
+                          <span class="span-required">Digite uma senha com no mínimo 8 caracteres</span>
                       </div>
                       <div class="input_wrap">
                         <label for="confirm_password">Confirme a senha</label>
                         <input
+                          class="input_area"
                           type="password"
                           name="Confirme a senha"
                           id="confirm_password"
-                          required
+                          oninput="comparePassword()"
                         />
+                        <span class="span-required">As senhas devem ser compatíveis</span>
                       </div>
                     </div>
                   </form>
@@ -70,33 +77,40 @@
                     <div class="form_container">
                       <div class="input_wrap">
                         <label for="name">Nome</label>
-                        <input type="text" name="Name" id="name" required />
+                        <input
+                          class="input_area" type="text" name="Name" id="name" oninput="nameValidate()" />
+                          <span class="span-required">O nome deve ter no mínimo 3 caracteres</span>
                       </div>
                       <div class="input_wrap">
                         <label for="lastname">Sobrenome</label>
-                        <input type="text" name="LastName" id="lastname" required />
+                        <input
+                          class="input_area" type="text" name="LastName" id="lastname" oninput="lastNameValidate()" />
+                          <span class="span-required">O sobrenome deve ter no mínimo 3 caracteres</span>
                       </div>
                       <div class="input_wrap">
                         <label for="cpf">CPF</label>
                         <input
+                          class="input_area"
                           type="text"
                           name="CPF"
                           id="cpf"
                           minlength="14"
                           maxlength="14"
-                          required
+                          oninput="cpfValidate()"
                         />
+                        <span class="span-required">Digite um CPF válido</span>
                       </div>
                     </div>
                   </form>
                 </div>
                 <div class="form_3 data_info" style="display: none;">
                   <h2>Endereço</h2>
-                  <form>
+                  <form class="form">
                     <div class="form_container">
                       <div class="input_wrap">
                         <label for="cep">CEP</label>
                         <input
+                          class="input_area"
                           type="text"
                           name="Cep"
                           id="cep"
@@ -104,6 +118,7 @@
                           maxlength="8"
                           required
                         />
+                        <span class="span-required">Digite um CEP válido</span>
                       </div>
                       <div class="input_wrap">
                         <label for="address">Rua</label>
@@ -126,6 +141,7 @@
                           required
                           data-input
                         />
+                        <span class="span-required">Digite o número da sua residência</span>
                       </div>
                       <div class="input_wrap">
                         <label for="complement">Complemento</label>
@@ -136,6 +152,7 @@
                           disabled
                           data-input
                         />
+                        
                       </div>
                       <div class="input_wrap">
                         <label for="neighborhood">Bairro</label>
@@ -200,13 +217,16 @@
                         </div>
                       </div>
                     </div>
+                    
                     <div class="form_4 data_info" style="display: none;">
                         <h2>Informações Pessoais</h2>
-                        <form>
+                        <form class="form">
                           <div class="form_container">
                             <div class="input_wrap">
-                              <label for="current_company">Empresa Atual</label>
-                              <input type="text" name="Current Company" id="current_company" required />
+                              <label for="current_company">Empresa Atual  *opcional</label>
+                              <input
+                                class="input_area" type="text" name="Current Company" id="current_company" />
+                                
                             </div>
                             <div class="input_wrap">
                               <label for="total_experience">Experiência Total(em anos)</label>
@@ -225,23 +245,23 @@
                               </select>
                             </div>
                             <div class="input_wrap">
-                              <label for="university">Faculdade(caso tenha)</label>
+                              <label for="university">Faculdade  *opcional</label>
                               <input
+                                class="input_area"
                                 type="text"
                                 name="University"
                                 id="university"
-                                required
                               />
                             </div>
                           </div>
                         </form>
                       </div>
-                
-                  </form>
+                    </form>
+                  
                 </div>
                 <div class="btns_wrap">
                     <div class="common_btns form_1_btns">
-                        <button type="button" class="btn_next">Próximo
+                        <button type="submit" class="btn_next1">Próximo
                             <span class="icon">
                                 <i class="bi bi-arrow-right"></i>
                             </span>
@@ -254,7 +274,7 @@
                             </span>
                             Voltar
                         </button>
-                        <button type="button" class="btn_next">Próximo
+                        <button type="button" class="btn_next2">Próximo
                             <span class="icon">
                                 <i class="bi bi-arrow-right"></i>
                             </span>
@@ -267,7 +287,7 @@
                             </span>
                             Voltar
                         </button>
-                        <button type="button" class="btn_next">Próximo
+                        <button type="button" class="btn_next3">Próximo
                             <span class="icon">
                                 <i class="bi bi-arrow-right"></i>
                             </span>

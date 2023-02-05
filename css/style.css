@@ -6,6 +6,7 @@
     --text-color: #5b6475;
     --header-color: #25283d;
     --next-btn-hover: #6a8ff5;
+    --color-red: #e63636;
 }
 
 *{
@@ -29,7 +30,7 @@ body{
     width: 750px;
     max-width: 100%;
     background: #fff;
-    margin: 100px auto 0;
+    margin: 50px auto 30px; 
     padding: 50px;
     border-radius: 7px;
     
@@ -129,6 +130,13 @@ body{
         border-color: var(--primary);
 }
 
+.wrapper .form_wrap .span-required{
+    display: none;
+    color: var(--color-red);
+    margin: 3px 0 0 2px;
+    font-size: .8rem;
+}
+
 .wrapper .btns_wrap{
     width: 350px;
     max-width: 100%;
@@ -164,7 +172,7 @@ body{
 }
 
 
-.wrapper .btns_wrap .common_btns button.btn_next .icon{
+button.btn_next1 .icon, button.btn_next2 .icon, button.btn_next3 .icon{
     display: flex;
     margin-left: 10px;
 }
