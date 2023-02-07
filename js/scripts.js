@@ -38,6 +38,7 @@ const neighborhoodInput = document.querySelector("#neighborhood");
 const regionInput = document.querySelector("#region");
 const formInputs = document.querySelectorAll("[data-input]");
 
+console.log(spans)
 
 //Functions
 
@@ -57,8 +58,8 @@ const getAddress = async (cep) => {
         if(!addressInput.hasAttribute('disabled')){
             toggleDisabled()
         }
-
         addressForm.reset()
+        setError(6)
         return
     }
 
@@ -73,15 +74,15 @@ const getAddress = async (cep) => {
 }
 
 const toggleDisabled = () => {
-    // if(regionInput.hasAttribute('disabled')){
-    //     formInputs.forEach((input) => {
-    //         input.removeAttribute('disabled')
-    //     })
-    // }else{
-    //     formInputs.forEach((input) => {
-    //         input.setAttribute('disabled', 'disabled')
-    //     })
-    // }
+    if(regionInput.hasAttribute('disabled')){
+        formInputs.forEach((input) => {
+            input.removeAttribute('disabled')
+        })
+    }else{
+        formInputs.forEach((input) => {
+            input.setAttribute('disabled', 'disabled')
+        })
+    }
 }
 
 //Functions that validates inputs
@@ -94,10 +95,24 @@ function removeError(index) {
     inputArea[index].classList = 'inputValidated' 
 }
 
+function removeError_form4(index,spanIndex) {
+    inputArea[index].style.border = ''
+    spans[spanIndex].style.display = 'none'
+
+    inputArea[index].classList = 'inputValidated' 
+}
+
 //function that set errors
 function setError(index) {
     inputArea[index].style.border = '2px solid #e63636'
     spans[index].style.display = 'block'
+
+    inputArea[index].classList.remove('inputValidated')
+}
+
+function setError_form4(index,spanIndex) {
+    inputArea[index].style.border = '2px solid #e63636'
+    spans[spanIndex].style.display = 'block'
 
     inputArea[index].classList.remove('inputValidated')
 }
@@ -173,17 +188,37 @@ function cepValidate() {
     }
 }
 
+function numberValidate() {
+    if(inputArea[7].value.length < 0){
+        setError(7)
+    }else{
+        removeError(7)
+    }
+}
+
+function totalExperienceValidate() {
+    if(inputArea[9].value < 1){
+        setError_form4(9,8)
+    }else{
+        removeError_form4(9,8)
+    }
+}
+
+
 //Functions of steps
 
 //function that updates the current step and updates the DOM
 let currentStep = 1;
 const updateSteps = (e) => {
 
-if(e.target.classList == 'btn_next1' || 'btn_next2'){
+if(e.target.classList == 'btn_next1' || 'btn_next2' || 'btn_next3'){
     if(inputArea[0].classList.contains('inputValidated') && inputArea[1].classList.contains('inputValidated') && inputArea[2].classList.contains('inputValidated')){
     currentStep++   
 
     }else if(inputArea[3].classList.contains('inputValidated') && inputArea[4].classList.contains('inputValidated') && inputArea[5].classList.contains('inputValidated')){
+        currentStep++
+
+    }else if(inputArea[6].classList.contains('inputValidated') && inputArea[7].classList.contains('inputValidated')){
         currentStep++
 
     }else if(e.target.classList == 'btn_back'){
@@ -287,13 +322,26 @@ form_3_back_btn.addEventListener('click', () => {
 
     //add click event to form_3_next
 form_3_next_btn.addEventListener('click', () => {
-        
-    form_3.style.display = 'none'
-    form_4.style.display = 'block'
 
-    form_3_btns.style.display = 'none'
-    form_4_btns.style.display = 'flex'
-    })
+    if(inputArea[6].classList.contains('inputValidated') && inputArea[7].classList.contains('inputValidated')){
+        
+        form_3.style.display = 'none'
+        form_4.style.display = 'block'
+
+        form_3_btns.style.display = 'none'
+        form_4_btns.style.display = 'flex'
+
+        inputValidatedRemove(6)
+        inputValidatedRemove(7)
+    
+    }else{
+        cepValidate()
+        numberValidate()
+        return
+    }
+})
+        
+    
 
     //add click event to form_4_back
 form_4_back_btn.addEventListener('click', () => {
@@ -303,11 +351,19 @@ form_4_back_btn.addEventListener('click', () => {
 
     form_3_btns.style.display = 'flex'
     form_4_btns.style.display = 'none'
+
+        cepValidate()
+        numberValidate()
     })
 
     //add click event to done button
     btn_done.addEventListener('click', () => {
-        modal_wrapper.classList.add('active')
+        if (inputArea[9].classList.contains('inputValidated')) {
+            modal_wrapper.classList.add('active')
+        }else{
+            totalExperienceValidate()
+            return
+        }
     })
 
     //add mask of CPF
@@ -345,6 +401,18 @@ form_4_back_btn.addEventListener('click', () => {
             return
         }
     })
+
+    //accept only numbers on total experience input
+
+    inputArea[9].addEventListener('keypress', (e) => {
+        const onlyNumbers = /[0-9]/
+        const key = String.fromCharCode(e.keyCode)
+
+        if(!onlyNumbers.test(key)){
+            e.preventDefault()
+            return
+        }
+    })  
 
     //get address event 
 

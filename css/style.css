@@ -125,6 +125,10 @@ body{
     transition: .5s ease;
 }
 
+.wrapper .form_wrap .input_wrap input[disabled],select[disabled]{
+    background-color: #eae7e7;
+}
+
 
 .wrapper .form_wrap .input_wrap input:focus{
         border-color: var(--primary);

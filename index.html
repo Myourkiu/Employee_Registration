@@ -105,7 +105,7 @@
                 </div>
                 <div class="form_3 data_info" style="display: none;">
                   <h2>Endereço</h2>
-                  <form class="form">
+                  <form class="form" id="form_address">
                     <div class="form_container">
                       <div class="input_wrap">
                         <label for="cep">CEP</label>
@@ -134,11 +134,12 @@
                       <div class="input_wrap">
                         <label for="number">Número da residência</label>
                         <input
+                        class="input_area"
                           type="text"
                           name="Number"
                           id="number"
                           disabled
-                          required
+                          oninput="numberValidate()"
                           data-input
                         />
                         <span class="span-required">Digite o número da sua residência</span>
@@ -223,30 +224,19 @@
                         <form class="form">
                           <div class="form_container">
                             <div class="input_wrap">
-                              <label for="current_company">Empresa Atual  *opcional</label>
+                              <label for="current_company">Empresa Atual  (opcional)</label>
                               <input
                                 class="input_area" type="text" name="Current Company" id="current_company" />
                                 
                             </div>
                             <div class="input_wrap">
                               <label for="total_experience">Experiência Total(em anos)</label>
-                              <select name="Total Experience" id="total_experience" required>
-                                <option selected>Selecione</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10+</option>
-                              </select>
+                              <input
+                                class="input_area" type="text" name="Total Experience" id="total_experience" oninput="totalExperienceValidate()" />
+                                <span class="span-required">O mínimo de experiência é 1 ano</span>
                             </div>
                             <div class="input_wrap">
-                              <label for="university">Faculdade  *opcional</label>
+                              <label for="university">Faculdade (opcional)</label>
                               <input
                                 class="input_area"
                                 type="text"
