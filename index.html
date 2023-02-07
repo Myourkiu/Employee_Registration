@@ -73,7 +73,7 @@
                 </div>
                 <div class="form_2 data_info" style="display: none;">
                   <h2>Informações Pessoais</h2>
-                  <form>
+                  <form id="address-form">
                     <div class="form_container">
                       <div class="input_wrap">
                         <label for="name">Nome</label>
@@ -116,7 +116,7 @@
                           id="cep"
                           minlength="8"
                           maxlength="8"
-                          required
+                          oninput="cepValidate()"
                         />
                         <span class="span-required">Digite um CEP válido</span>
                       </div>
@@ -231,7 +231,8 @@
                             <div class="input_wrap">
                               <label for="total_experience">Experiência Total(em anos)</label>
                               <select name="Total Experience" id="total_experience" required>
-                                <option selected>0</option>
+                                <option selected>Selecione</option>
+                                <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

@@ -30,10 +30,61 @@ const form_3_back_btn = document.querySelector(".form_3_btns .btn_back");
 const form_3_next_btn = document.querySelector(".form_3_btns .btn_next3");
 const form_4_back_btn = document.querySelector(".form_4_btns .btn_back");
 
+const addressForm = document.querySelector('#address-form')
+const cepInput = document.querySelector('#cep')
+const addressInput = document.querySelector("#address");
+const cityInput = document.querySelector("#city");
+const neighborhoodInput = document.querySelector("#neighborhood");
+const regionInput = document.querySelector("#region");
+const formInputs = document.querySelectorAll("[data-input]");
+
+
 //Functions
 
-//Function that validates inputs
+//Functions that returns API's data
 
+//get costumers from api
+
+const getAddress = async (cep) => {
+
+    const apiURL = `https://viacep.com.br/ws/${cep}/json/`
+
+    const response = await fetch(apiURL)
+    const data = await response.json()
+    console.log(data)
+
+    if(data.erro === true){
+        if(!addressInput.hasAttribute('disabled')){
+            toggleDisabled()
+        }
+
+        addressForm.reset()
+        return
+    }
+
+    if(addressInput.value === ''){
+        toggleDisabled()
+    }
+
+    addressInput.value = data.logradouro
+    cityInput.value = data.localidade;
+    neighborhoodInput.value = data.bairro;
+    regionInput.value = data.uf;
+}
+
+const toggleDisabled = () => {
+    // if(regionInput.hasAttribute('disabled')){
+    //     formInputs.forEach((input) => {
+    //         input.removeAttribute('disabled')
+    //     })
+    // }else{
+    //     formInputs.forEach((input) => {
+    //         input.setAttribute('disabled', 'disabled')
+    //     })
+    // }
+}
+
+//Functions that validates inputs
 
 //functions that remove errors
 function removeError(index) {
@@ -47,16 +98,13 @@ function removeError(index) {
 function setError(index) {
     inputArea[index].style.border = '2px solid #e63636'
     spans[index].style.display = 'block'
+
+    inputArea[index].classList.remove('inputValidated')
 }
 
 //function remove inputValidated
 function inputValidatedRemove(index) {
     inputArea[index].classList.remove('inputValidated')
-}
-
-//function add inputValidated
-function inputValidatedAdd(index) {
-    inputArea[index].classList.add('inputValidated')
 }
 
 //function that validates email
@@ -118,7 +166,11 @@ function cpfValidate() {
 //function that validates CEP
 
 function cepValidate() {
-    
+    if(inputArea[6].value.length < 8){
+        setError(6)
+    }else{
+        removeError(6)
+    }
 }
 
 //Functions of steps
@@ -192,9 +244,9 @@ form_2_back_btn.addEventListener('click', () => {
     form_1_btns.style.display = 'flex'
     form_2_btns.style.display = 'none'
 
-    inputValidatedAdd(0)
-    inputValidatedAdd(1)
-    inputValidatedAdd(2)
+        emailValidate()
+        mainPasswordValidate()
+        comparePassword()
     })
 
 
@@ -228,9 +280,9 @@ form_3_back_btn.addEventListener('click', () => {
     form_2_btns.style.display = 'flex'
     form_3_btns.style.display = 'none'
 
-    inputValidatedAdd(3)
-    inputValidatedAdd(4)
-    inputValidatedAdd(5)
+        nameValidate()
+        lastNameValidate()
+        cpfValidate()
     })
 
     //add click event to form_3_next
@@ -253,6 +305,7 @@ form_4_back_btn.addEventListener('click', () => {
     form_4_btns.style.display = 'none'
     })
 
+    //add click event to done button
     btn_done.addEventListener('click', () => {
         modal_wrapper.classList.add('active')
     })
@@ -269,5 +322,35 @@ form_4_back_btn.addEventListener('click', () => {
         if(inputlength === 11){
             inputArea[5].value += '-'
         }
+    })
+
+    //accept only numbers on CPF input
+    inputArea[5].addEventListener('keypress', (e) => {
+        const onlyNumbers = /[0-9]/
+        const key = String.fromCharCode(e.keyCode)
+
+        if (!onlyNumbers.test(key)) {
+            e.preventDefault()
+            return
+        }
+    })
+
+    //accept only numbers on CEP input
+    cepInput.addEventListener('keypress', (e) => {
+        const onlyNumbers = /[0-9]/
+        const key = String.fromCharCode(e.keyCode)
+
+        if (!onlyNumbers.test(key)) {
+            e.preventDefault()
+            return
+        }
+    })
+
+    //get address event 
+
+    cepInput.addEventListener('keyup', (e) => {
+        const inputValue = e.target.value
+
+        if(inputValue.length ===8) getAddress(inputValue)
     })
     
