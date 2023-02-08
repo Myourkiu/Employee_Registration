@@ -189,7 +189,7 @@ function cepValidate() {
 }
 
 function numberValidate() {
-    if(inputArea[7].value.length < 0){
+    if(inputArea[7].value.length <= 0){
         setError(7)
     }else{
         removeError(7)
