@@ -73,7 +73,7 @@ const getAddress = async (cep) => {
 };
 
 const toggleDisabled = () => {
-  if (regionInput.hasAttribute("disabled")) {
+  if (addressInput.hasAttribute("disabled")) {
     formInputs.forEach((input) => {
       input.removeAttribute("disabled");
     });
